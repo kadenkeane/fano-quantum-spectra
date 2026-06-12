@@ -56,7 +56,7 @@
     "familyLabel": "MM 2-34",
     "name": "$\\mathbb{P}^1 \\times \\mathbb{P}^2$",
     "status": "confirmed",
-    "contractions": "There is one contraction to $\\mathbb{P}^1$ with $\\mathbb{P}^2$fibers and a contraction to $\\mathbb{P}^2$ with $\\mathbb{P}^1$ fibers",
+    "contractions": "There is one contraction to $\\mathbb{P}^1$ with $\\mathbb{P}^2$ fibers and a contraction to $\\mathbb{P}^2$ with $\\mathbb{P}^1$ fibers",
     "superpotential": "W=x+y+z+\\frac{q_1}{x}+\\frac{q_2}{yz}",
     "spectrumPolynomial": "t^6-12q_1t^4+48q_1^2t^2-54q_2t^3-64q_1^3-648q_1q_2t+729q_2^2=0",
     "braidWord": "\\sigma_3^{-1}\\sigma_2^{-1}\\sigma_4\\sigma_5^{-1}\\sigma_3^{-1}\\sigma_1^{-1}",
