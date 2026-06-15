@@ -164,7 +164,7 @@ a:hover { text-decoration: underline; }
   white-space: nowrap;
 }
 
-[data-status="confirmed"] .status-badge {
+[data-status="confirmed"] .status-badge, [data-status="confirmed_star"] .status-badge {
   color: #2a7a4a;
   background: rgba(42, 122, 74, 0.1);
   border: 1px solid rgba(42, 122, 74, 0.25);
@@ -347,7 +347,7 @@ a:hover { text-decoration: underline; }
   font-weight: 500;
 }
 
-[data-status="confirmed"]   .mutation-status { color: #2a7a4a; }
+[data-status="confirmed"]   .mutation-status, [data-status="confirmed_star"]   .mutation-status { color: #2a7a4a; }
 [data-status="unconfirmed"] .mutation-status { color: #8a5a10; }
 
 /* ── Footer ───────────────────────────────────────────────────── */
@@ -363,4 +363,130 @@ a:hover { text-decoration: underline; }
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .two-col, .meta-strip { grid-template-columns: 1fr; }
+}
+
+.braid-toolbar {
+  gap: 6px;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+/* ── Info pages ───────────────────────────────────────────────── */
+.info-page {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 6rem;
+}
+
+.info-back {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  margin-bottom: 2rem;
+}
+
+.info-back:hover { color: var(--color-accent); text-decoration: none; }
+
+.info-header {
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.info-title {
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-weight: normal;
+  color: var(--color-text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.info-subtitle {
+  font-size: 0.875rem;
+  font-family: var(--font-ui);
+  color: var(--color-text-tertiary);
+}
+
+.info-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.info-body section { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.info-body h2 {
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: var(--font-ui);
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.07em;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.info-body p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.info-body p + p { margin-top: 0.5rem; }
+
+/* ── Param table ──────────────────────────────────────────────── */
+.param-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.param-row {
+  display: grid;
+  grid-template-columns: 10rem 8rem 1fr;
+  gap: 1rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+  align-items: baseline;
+}
+
+.param-row:last-child { border-bottom: none; }
+.param-row:nth-child(even) { background: var(--color-surface-2); }
+
+.param-name {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-accent);
+}
+
+.param-value {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-primary);
+}
+
+.param-desc {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+/* ── Code blocks ──────────────────────────────────────────────── */
+.info-body pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+}
+
+.info-body code {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-primary);
+  line-height: 1.7;
 }

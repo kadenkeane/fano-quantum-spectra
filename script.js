@@ -4,6 +4,7 @@
 
 const STATUS_TEXT = {
   confirmed:  'Confirmed Mutation Match',
+  confirmed_star:  'Confirmed Mutation Match',
   unconfirmed:    'Unconfirmed Mutation Match',
 };
 
@@ -26,15 +27,97 @@ const titleEl = document.getElementById('site-title');
 titleEl.innerHTML = renderText(titleEl.textContent);
 
 /* ── Build a single card element from a variety data object ───── */
-const BRAID_MODES = [
-  { key: 'default',        label: 'Default' },
-  { key: 'start_clusters', label: 'Color by starting clusters' },
-  { key: 'end_clusters',   label: 'Color by ending clusters' },
-  { key: 'simplified',     label: 'Simplified' },
+const BRAID_TOGGLES = [
+  {
+    key: 'simplification',
+    states: [
+      { value: 'none',     label: 'No Simplification' },
+      { value: 'initial',  label: 'Initial Cluster Simplification' },
+      { value: 'terminal', label: 'Ending Cluster Simplification' },
+      { value: 'total',    label: 'Total Simplification' },
+    ]
+  },
+  {
+    key: 'color',
+    states: [
+      { value: 'default',           label: 'Default Colors' },
+      { value: 'initial_clusters',  label: 'Color by Initial Clusters' },
+      { value: 'terminal_clusters', label: 'Color by Ending Clusters' },
+    ]
+  },
+  {
+    key: 'perturbation',
+    states: [
+      { value: 'positive', label: 'Positive Perturbation' },
+      { value: 'negative', label: 'Negative Perturbation' },
+    ]
+  },
+  {
+    key: 'order',
+    states: [
+      { value: 'default',  label: 'Default Order' },
+      { value: 'reversed', label: 'Reversed Order' },
+    ]
+  },
+  {
+    key: 'crossings',
+    states: [
+      { value: 'default', label: 'Default Over/Under' },
+      { value: 'swapped', label: 'Swapped Over/Under' },
+    ]
+  },
 ];
+
+function buildBraidState() {
+  const state = {};
+  BRAID_TOGGLES.forEach(t => state[t.key] = 0); // index into states array
+  return state;
+}
+
+function braidImagePath(varietyId, state) {
+  const color          = BRAID_TOGGLES[1].states[state.color].value;
+  const perturbation   = BRAID_TOGGLES[2].states[state.perturbation].value;
+  const order          = BRAID_TOGGLES[3].states[state.order].value;
+  const crossings      = BRAID_TOGGLES[4].states[state.crossings].value;
+  const simplification = BRAID_TOGGLES[0].states[state.simplification].value;
+  return `data/${varietyId}/${varietyId}_${color}_coloring_${crossings}_crossings_${perturbation}_perturbation_${order}_order_${simplification}_simplification.png`;
+}
+
+const ANIMATION_TOGGLES = [
+  // BRAID_TOGGLES.find(t => t.key === 'color'),
+  BRAID_TOGGLES.find(t => t.key === 'perturbation'),
+];
+
+function animationImagePath(varietyId, animationType, state) {
+  const colorToggle       = BRAID_TOGGLES.find(t => t.key === 'color');
+  const perturbationToggle = BRAID_TOGGLES.find(t => t.key === 'perturbation');
+  const color        = colorToggle.states[state.color].value;
+  const perturbation = perturbationToggle.states[state.perturbation].value;
+  return `data/${varietyId}/${varietyId}_${animationType}_${color}_coloring_${perturbation}_perturbation.gif`;
+}
+
+function buildAnimationToolbar(card, varietyId, animationType) {
+  const toolbar = card.querySelector(`#anim-toolbar-${animationType}-${varietyId}`);
+  const img     = card.querySelector(`#anim-img-${animationType}-${varietyId}`);
+  const state   = { color: 0, perturbation: 0 };
+
+  ANIMATION_TOGGLES.forEach(toggle => {
+    const btn = document.createElement('button');
+    btn.className = 'mode-btn';
+    btn.textContent = toggle.states[0].label;
+    btn.addEventListener('click', () => {
+      state[toggle.key] = (state[toggle.key] + 1) % toggle.states.length;
+      btn.textContent = toggle.states[state[toggle.key]].label;
+      btn.classList.toggle('active', state[toggle.key] !== 0);
+      img.src = animationImagePath(varietyId, animationType, state);
+    });
+    toolbar.appendChild(btn);
+  });
+}
 
 const MUTATION_TEXT = {
   confirmed:  'Confirmed',
+  confirmed_star: 'Confirmed*',
   unconfirmed:    'Unconfirmed',
 };
 
@@ -58,9 +141,6 @@ function buildCard(variety) {
   card.dataset.id     = variety.id;
   card.dataset.status = variety.status;
 
-  const modeButtons = BRAID_MODES.map((m, i) =>
-    `<button class="mode-btn${i === 0 ? ' active' : ''}" data-mode="${m.key}">${m.label}</button>`
-  ).join('');
 
   card.innerHTML = `
     <div class="variety-header">
@@ -77,7 +157,7 @@ function buildCard(variety) {
       <div class="body-section">
 
         <div class="info-block">
-          <p class="block-label">Contractions</p>
+          <p class="block-label">Extremal Contractions</p>
           <p class="block-text">${renderText(variety.contractions)}</p>
         </div>
 
@@ -93,25 +173,32 @@ function buildCard(variety) {
 
         <div class="divider"></div>
 
-        ${buildSubsection('Eigenvalue animation',
-          `<div class="media-frame">
-            <img src="data/${variety.id}/${variety.id}_eigenvalue_animation.gif" alt="Eigenvalue animation for ${variety.familyLabel}" loading="lazy">
+        ${buildSubsection('Evolution of the Eigenvalues Along the Path',
+          `<div class="braid-toolbar" id="anim-toolbar-eigenvalue_animation-${variety.id}"></div>
+          <div class="media-frame">
+            <img id="anim-img-eigenvalue_animation-${variety.id}"
+              src="data/${variety.id}/${variety.id}_eigenvalue_animation_default_coloring_positive_perturbation.gif"
+              alt="Eigenvalue animation for ${variety.familyLabel}" loading="lazy">
           </div>`
         )}
 
-        ${buildSubsection('Braid animation',
-          `<div class="media-frame">
-            <img src="data/${variety.id}/${variety.id}_braid_animation.gif" alt="Braid animation for ${variety.familyLabel}" loading="lazy">
+        ${buildSubsection('Braid Animation',
+          `<div class="braid-toolbar" id="anim-toolbar-braid_animation-${variety.id}"></div>
+          <div class="media-frame">
+            <img id="anim-img-braid_animation-${variety.id}"
+              src="data/${variety.id}/${variety.id}_braid_animation_default_coloring_positive_perturbation.gif"
+              alt="Braid animation for ${variety.familyLabel}" loading="lazy">
           </div>`
         )}
 
         ${buildSubsection('Braid diagram',
-          `<div class="braid-toolbar">${modeButtons}</div>
+          `<div class="braid-toolbar" id="braid-toolbar-${variety.id}"></div>
           <div class="media-frame">
-            <img class="braid-img" src="data/${variety.id}/${variety.id}_braid_diagram_default.png" alt="Braid diagram for ${variety.familyLabel}" loading="lazy">
+            <img class="braid-img" id="braid-img-${variety.id}" 
+              src="data/${variety.id}/${variety.id}_default_coloring_default_crossings_positive_perturbation_default_order_none_simplification.png" 
+              alt="Braid diagram for ${variety.familyLabel}" loading="lazy">
           </div>`
         )}
-
         <div class="divider"></div>
 
         <div class="meta-strip">
@@ -131,7 +218,10 @@ function buildCard(variety) {
             <p class="mutation-status">${MUTATION_TEXT[variety.status] ?? '—'}</p>
           </div>
         </div>
-
+        ${variety.notes != "" ? '<div class="divider"></div>' : ''}
+        <div class="info-block">
+          <p class="block-text">${renderText(variety.notes)}</p>
+        </div>
       </div>
     </div>
   `;
@@ -148,15 +238,24 @@ function buildCard(variety) {
     });
   });
 
-  // braid mode buttons
-  const toolbar = card.querySelector('.braid-toolbar');
-  const braidImg = card.querySelector('.braid-img');
-  toolbar.addEventListener('click', e => {
-    const btn = e.target.closest('.mode-btn');
-    if (!btn) return;
-    toolbar.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    braidImg.src = `data/${variety.id}/${variety.id}_braid_diagram_${btn.dataset.mode}.png`;
+  // braid cycling toggles
+  const state = buildBraidState();
+  const toolbar = card.querySelector(`#braid-toolbar-${variety.id}`);
+  const braidImg = card.querySelector(`#braid-img-${variety.id}`);
+  buildAnimationToolbar(card, variety.id, 'eigenvalue_animation');
+  buildAnimationToolbar(card, variety.id, 'braid_animation');
+
+  BRAID_TOGGLES.forEach((toggle, toggleIndex) => {
+    const btn = document.createElement('button');
+    btn.className = 'mode-btn';
+    btn.textContent = toggle.states[0].label;
+    btn.addEventListener('click', () => {
+      state[toggle.key] = (state[toggle.key] + 1) % toggle.states.length;
+      btn.textContent = toggle.states[state[toggle.key]].label;
+      btn.classList.toggle('active', state[toggle.key] !== 0);
+      braidImg.src = braidImagePath(variety.id, state);
+    });
+    toolbar.appendChild(btn);
   });
 
   return card;

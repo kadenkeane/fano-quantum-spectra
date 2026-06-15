@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computation Parameters</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+</head>
+<body>
+
+  <article class="info-page">
+    
+    <header class="info-header">
+      <a class="info-back" href="index.html">← Back</a>
+      <h1 class="info-title">Computation Parameters</h1>
+      <p class="info-subtitle"><!-- optional subtitle or date --></p>
+    </header>
+
+    <div class="info-body">
+      <section>
+        <h2><b>Line field of slope 1:</b></h2>
+        <p>
+          The line field upon which the relative position of the eigenvalues with regards to braiding is determined is made up of lines of slope 1. More concretely, in the program the variable is set as: 
+          <code><br>projectionDirection = [-1, 1]<br></code>
+          which represents $-x+y$, or in this case we are talking about numbers in the complex plane so for each $z \in \mathbb{C}$ it represents $-\mathrm{Re}(z)+\mathrm{Im}(z)$
+          <br> So the program assigns a single real number, $\alpha$, to each complex eigenvalue such that the eigenvalue's position in the complex plane corresponds to a point in $\mathbb{R}^2$ lying on the line <br>$y-x=\alpha$<br> and so by comparing these $\alpha$ you get an ordering of the eigenvalues
+          <br> For the braid diagram, the reversed order setting actually recomputes the braid with <code>projectionDirection = [1, -1]</code>, effectively causing the $\alpha$ value to be multiplied by $-1$ thus reversing the ordering of all eigenvalues
+        </p>
+      </section>
+      <section>
+        <h2><b>
+          Over/Under is determined by the eigenvalue with the smaller real component:
+        </b></h2>
+        <p>
+          When two eigenvalues cross, the eigenvalue with the smaller real component is considered as crossing over by default. Toggling swapped over/under on the braid diagram changes it so that the eigenvalue with the greater real component is over.
+        </p>
+      </section>
+      <section>
+        <h2><b>
+          The program starts at $t=0.0000000000000001$ and ends at $t=1$:
+        </b></h2>
+        <p>
+          All computations do not technically start at $t=0$. They have to start slightly after 0 so that the eigenvalues are slightly seperated instead of being directly on top of each other, which is required for them to be colored consistently. Otherwise the colors are assigned at random every time because each eigenvalue in a cluster starts exactly the same.
+        </p>
+      </section>
+      <section>
+        <h2><b>
+          $q_1$ and $q_2$ follow a quarter circle path:
+        </b></h2>
+        <p>
+          At a given $t$, 
+          <br>$q_1 = (\sin(\frac{\pi t}{2})$ + perturbation($t, \varepsilon))^n$ 
+          <br>$q_2 = (\cos(\frac{\pi t}{2}))^m$
+          <br>Where $n$ and $m$ are the weights such that the quantum spectrum polynomial is homogeneous by $\lambda \cdot (q_1,q_2,t) = (\lambda^n q_1, \lambda^m q_2, \lambda t)$
+        </p>
+      </section>
+      <section>
+        <h2><b>
+          $\varepsilon=0.15$
+        </b></h2>
+        <p>
+          perturbation$(t, \varepsilon) = \sqrt{\sin(\pi t)} \cdot \varepsilon \cdot i$
+          <br>Thus the perturbation starts at 0, so the clustering is clear, then steeply increases so that the roots become perturbed almost immediately, then sharply drops to 0 again at $t=1$.
+          <br>The negative perturbation setting sets $\varepsilon = -0.15$
+        </p>
+      </section>
+      <section>
+        <h2><b>
+          
+        </b></h2>
+        <p>
+          
+        </p>
+      </section>
+      
+    </div>
+
+  </article>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script src="info.js"></script>
+</body>
+</html>
