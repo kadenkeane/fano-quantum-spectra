@@ -1,11 +1,8 @@
-/* ================================================================
-   style.css — Quantum Spectra of Fano Threefolds
-   ================================================================ */
 
-/* ── Reset ────────────────────────────────────────────────────── */
+/* Reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── Variables ────────────────────────────────────────────────── */
+/*    Variables                                                    */
 :root {
   --font-sans: 'Georgia', 'Times New Roman', serif;
   --font-ui:   system-ui, -apple-system, sans-serif;
@@ -29,7 +26,7 @@
   --radius-lg: 6px;
 }
 
-/* ── Base ─────────────────────────────────────────────────────── */
+/*    Base                                                         */
 html { font-size: 16px; }
 
 body {
@@ -43,7 +40,7 @@ body {
 a { color: var(--color-accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* ── Layout ───────────────────────────────────────────────────── */
+/*    Layout                                                       */
 .site-header,
 .main-content,
 .site-footer {
@@ -53,7 +50,7 @@ a:hover { text-decoration: underline; }
   padding: 0 1.5rem;
 }
 
-/* ── Header ───────────────────────────────────────────────────── */
+/*    Header                                                       */
 .site-header {
   padding-top: 3.5rem;
   padding-bottom: 2.5rem;
@@ -79,20 +76,20 @@ a:hover { text-decoration: underline; }
 
 .header-body p + p { margin-top: 0.75rem; }
 
-/* ── Main ─────────────────────────────────────────────────────── */
+/*    Main                                                         */
 .main-content {
   padding-top: 0;
   padding-bottom: 4rem;
 }
 
-/* ── Variety list ─────────────────────────────────────────────── */
+/*    Variety list                                                 */
 .variety-list {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-/* ── Variety card ─────────────────────────────────────────────── */
+/*    Variety card                                                 */
 .variety-card {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -100,7 +97,7 @@ a:hover { text-decoration: underline; }
   overflow: hidden;
 }
 
-/* ── Card header ──────────────────────────────────────────────── */
+/*    Card header                                                  */
 .variety-header {
   display: flex;
   align-items: center;
@@ -154,7 +151,7 @@ a:hover { text-decoration: underline; }
 
 .variety-card.open .chevron { transform: rotate(180deg); }
 
-/* ── Status badge ─────────────────────────────────────────────── */
+/*    Status badge                                                 */
 .status-badge {
   font-size: 0.7rem;
   font-weight: 500;
@@ -176,7 +173,7 @@ a:hover { text-decoration: underline; }
   border: 1px solid rgba(138, 90, 16, 0.2);
 }
 
-/* ── Card body ────────────────────────────────────────────────── */
+/*    Card body                                                    */
 .variety-body {
   display: none;
   padding: 1.25rem;
@@ -191,7 +188,7 @@ a:hover { text-decoration: underline; }
   gap: 1.25rem;
 }
 
-/* ── Info layout ──────────────────────────────────────────────── */
+/*    Info layout                                                  */
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -222,7 +219,7 @@ a:hover { text-decoration: underline; }
   background: var(--color-border);
 }
 
-/* ── Math blocks ──────────────────────────────────────────────── */
+/*    Math blocks                                                  */
 .math-block {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -231,10 +228,10 @@ a:hover { text-decoration: underline; }
   overflow-x: auto;
 }
 
-/* ── KaTeX ────────────────────────────────────────────────────── */
+/*    KaTeX                                                        */
 .katex { font-size: 1em; color: var(--color-text-primary); }
 
-/* ── Subsections ──────────────────────────────────────────────── */
+/*    Subsections                                                  */
 .subsection {
   border: 1px solid var(--color-border);
   border-radius: 4px;
@@ -274,7 +271,7 @@ a:hover { text-decoration: underline; }
 
 .subsection.open .subsection-body { display: block; }
 
-/* ── Media ────────────────────────────────────────────────────── */
+/*    Media                                                        */
 .media-frame {
   background: var(--color-bg);
   border-radius: 4px;
@@ -291,7 +288,7 @@ a:hover { text-decoration: underline; }
   object-fit: contain;
 }
 
-/* ── Braid viewer ─────────────────────────────────────────────── */
+/*    Braid viewer                                                 */
 .braid-toolbar {
   display: flex;
   gap: 6px;
@@ -323,7 +320,7 @@ a:hover { text-decoration: underline; }
   font-weight: 500;
 }
 
-/* ── Metadata strip ───────────────────────────────────────────── */
+/*    Metadata strip                                               */
 .meta-strip {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -350,7 +347,7 @@ a:hover { text-decoration: underline; }
 [data-status="confirmed"]   .mutation-status, [data-status="confirmed_star"]   .mutation-status { color: #2a7a4a; }
 [data-status="unconfirmed"] .mutation-status { color: #8a5a10; }
 
-/* ── Footer ───────────────────────────────────────────────────── */
+/*    Footer                                                       */
 .site-footer {
   padding-top: 1.5rem;
   padding-bottom: 2rem;
@@ -360,7 +357,7 @@ a:hover { text-decoration: underline; }
   color: var(--color-text-tertiary);
 }
 
-/* ── Responsive ───────────────────────────────────────────────── */
+/*    Responsive                                                   */
 @media (max-width: 600px) {
   .two-col, .meta-strip { grid-template-columns: 1fr; }
 }
@@ -372,7 +369,7 @@ a:hover { text-decoration: underline; }
   display: flex;
 }
 
-/* ── Info pages ───────────────────────────────────────────────── */
+/*    Info pages                                                   */
 .info-page {
   width: 100%;
   max-width: 680px;
@@ -436,7 +433,7 @@ a:hover { text-decoration: underline; }
 
 .info-body p + p { margin-top: 0.5rem; }
 
-/* ── Param table ──────────────────────────────────────────────── */
+/*    Param table                                                  */
 .param-table {
   display: flex;
   flex-direction: column;
@@ -475,7 +472,7 @@ a:hover { text-decoration: underline; }
   color: var(--color-text-secondary);
 }
 
-/* ── Code blocks ──────────────────────────────────────────────── */
+/*    Code blocks                                                  */
 .info-body pre {
   background: var(--color-surface);
   border: 1px solid var(--color-border);

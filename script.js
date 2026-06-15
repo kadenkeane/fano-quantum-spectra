@@ -1,6 +1,3 @@
-/* ================================================================
-   script.js — Quantum Spectra of Fano Threefolds
-   ================================================================ */
 
 const STATUS_TEXT = {
   confirmed:  'Confirmed Mutation Match',
@@ -8,7 +5,7 @@ const STATUS_TEXT = {
   unconfirmed:    'Unconfirmed Mutation Match',
 };
 
-/* ── KaTeX renderer ───────────────────────────────────────────── */
+// KaTeX renderer
 function renderMath(tex) {
   try {
     return katex.renderToString(tex, { throwOnError: false, displayMode: false });
@@ -26,7 +23,6 @@ function renderText(str) {
 const titleEl = document.getElementById('site-title');
 titleEl.innerHTML = renderText(titleEl.textContent);
 
-/* ── Build a single card element from a variety data object ───── */
 const BRAID_TOGGLES = [
   {
     key: 'simplification',
@@ -135,6 +131,7 @@ function buildSubsection(title, contentHTML) {
   `;
 }
 
+// Build a single card element from a variety data object
 function buildCard(variety) {
   const card = document.createElement('div');
   card.className = 'variety-card';
@@ -261,7 +258,7 @@ function buildCard(variety) {
   return card;
 }
 
-/* ── Fetch data and render all cards ──────────────────────────── */
+// Fetch data and render all cards
 fetch('data.json')
   .then(res => res.json())
   .then(varieties => {
