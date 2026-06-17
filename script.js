@@ -1,9 +1,26 @@
 
-const STATUS_TEXT = {
-  confirmed:  'Confirmed Mutation Match',
-  confirmed_star:  'Confirmed Mutation Match',
-  unconfirmed:    'Unconfirmed Mutation Match',
+// Status text mappings
+const SUPERPOTENTIAL_TEXT = {
+  confirmed:   'Confirmed Superpotential',
+  confirmed_star:   'Confirmed Superpotential',
+  unconfirmed: 'Unconfirmed Superpotential',
 };
+
+const MUTATION_TEXT = {
+  confirmed:   'Confirmed Mutation Match',
+  confirmed_star:   'Confirmed Mutation Match',
+  unconfirmed: 'Unconfirmed Mutation Match',
+};
+
+// Determine header badge text based on both status fields
+function getHeaderBadgeText(variety) {
+  if (variety.superpotential_status === 'unconfirmed') {
+    return 'Unconfirmed Superpotential';
+  }
+  return variety.mutation_status === 'confirmed' || variety.mutation_status === 'confirmed_star' 
+  ? 'Confirmed Mutation Match' 
+  : 'Unconfirmed Mutation Match';
+}
 
 // KaTeX renderer
 function renderMath(tex) {
@@ -110,8 +127,40 @@ function buildAnimationToolbar(card, varietyId, animationType) {
     toolbar.appendChild(btn);
   });
 }
+const RPATH_TOGGLES = [
+  {
+    key: 'chart',
+    states: [
+      { value: 'q1',     label: renderText("$q_1^m$ / $q_2^n$") },
+      { value: 'q2',  label: renderText("$q_2^n$ / $q_1^m$") }
+    ]
+  }
+]
 
-const MUTATION_TEXT = {
+function rpathImagePath(varietyId, state) {
+  const chart          = RPATH_TOGGLES[0].states[state].value;
+  return `data/${varietyId}/${varietyId}_${chart}_rPath.png`;
+}
+
+function buildRpathToolbar(card, varietyId) {
+  const toolbar = card.querySelector(`#rpath-toolbar-${varietyId}`);
+  const img     = card.querySelector(`#rpath-img-${varietyId}`);
+  let state = 0;
+
+  RPATH_TOGGLES.forEach(toggle => {
+    const btn = document.createElement('button');
+    btn.className = 'mode-btn';
+    btn.innerHTML = toggle.states[0].label;
+    btn.addEventListener('click', () => {
+      state = (state + 1) % toggle.states.length;
+      btn.innerHTML = toggle.states[state].label;
+      btn.classList.toggle('active', state !== 0);
+      img.src = rpathImagePath(varietyId, state);
+    });
+    toolbar.appendChild(btn);
+  });
+}
+const STATUS_TEXT = {
   confirmed:  'Confirmed',
   confirmed_star: 'Confirmed*',
   unconfirmed:    'Unconfirmed',
@@ -136,7 +185,8 @@ function buildCard(variety) {
   const card = document.createElement('div');
   card.className = 'variety-card';
   card.dataset.id     = variety.id;
-  card.dataset.status = variety.status;
+  card.dataset.superpotentialStatus = variety.superpotential_status;
+  card.dataset.mutationStatus = variety.mutation_status;
 
 
   card.innerHTML = `
@@ -146,7 +196,7 @@ function buildCard(variety) {
         <span class="variety-name">${renderText(variety.name)}</span>
       </div>
       <div class="header-right">
-        <span class="status-badge">${STATUS_TEXT[variety.status] ?? '—'}</span>
+        <span class="status-badge">${getHeaderBadgeText(variety)}</span>
         <span class="chevron">&#8964;</span>
       </div>
     </div>
@@ -187,6 +237,14 @@ function buildCard(variety) {
               alt="Braid animation for ${variety.familyLabel}" loading="lazy">
           </div>`
         )}
+        ${/*buildSubsection('Discriminant Points',
+          `<div class="braid-toolbar" id="rpath-toolbar-${variety.id}"></div>
+          <div class="media-frame">
+            <img id="rpath-img-${variety.id}"
+              src="data/${variety.id}/${variety.id}_q1_rPath.png"
+              alt="Ratio path diagram for ${variety.familyLabel}" loading="lazy">
+          </div>`
+        )*/""} 
 
         ${buildSubsection('Braid diagram',
           `<div class="braid-toolbar" id="braid-toolbar-${variety.id}"></div>
@@ -211,8 +269,11 @@ function buildCard(variety) {
             </p>
           </div>
           <div class="info-block">
-            <p class="block-label">Mutation match</p>
-            <p class="mutation-status">${MUTATION_TEXT[variety.status] ?? '—'}</p>
+            <p class="block-label">Status</p>
+            <p class="block-text">
+              <span class="superpotential-status">Superpotential: ${STATUS_TEXT[variety.superpotential_status] ?? '—'}</span><br>
+              <span class="mutation-status">Mutation Match: ${STATUS_TEXT[variety.mutation_status] ?? '—'}</span>
+            </p>
           </div>
         </div>
         ${variety.notes != "" ? '<div class="divider"></div>' : ''}
@@ -241,6 +302,7 @@ function buildCard(variety) {
   const braidImg = card.querySelector(`#braid-img-${variety.id}`);
   buildAnimationToolbar(card, variety.id, 'eigenvalue_animation');
   buildAnimationToolbar(card, variety.id, 'braid_animation');
+  // buildRpathToolbar(card, variety.id);
 
   BRAID_TOGGLES.forEach((toggle, toggleIndex) => {
     const btn = document.createElement('button');
