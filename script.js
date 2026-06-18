@@ -186,6 +186,43 @@ function buildSubsection(title, contentHTML) {
   `;
 }
 
+const FILTERS = [
+  { label: 'All',                        test: v => true },
+  { label: 'Confirmed Superpotential',   test: v => v.superpotential_status === 'confirmed' || v.superpotential_status === 'confirmed_star' },
+  { label: 'Confirmed Mutation Match',   test: v => v.mutation_status === 'confirmed' || v.mutation_status === 'confirmed_star' },
+];
+
+let activeFilter = 0;
+let loadedVarieties = [];
+
+function applyFilter() {
+  const test = FILTERS[activeFilter].test;
+  loadedVarieties.forEach(({ variety, card }) => {
+    card.style.display = test(variety) ? '' : 'none';
+  });
+}
+
+function buildFilterBar() {
+  const bar = document.getElementById('filter-bar');
+  const select = document.createElement('select');
+  select.className = 'filter-select';
+  
+  FILTERS.forEach((filter, i) => {
+    const option = document.createElement('option');
+    option.value = i;
+    option.textContent = filter.label;
+    select.appendChild(option);
+  });
+
+  select.addEventListener('change', () => {
+    activeFilter = parseInt(select.value);
+    applyFilter();
+  });
+
+  bar.appendChild(select);
+}
+buildFilterBar()
+
 // Build a single card element from a variety data object
 function buildCard(variety) {
   const card = document.createElement('div');
@@ -324,17 +361,16 @@ function buildCard(variety) {
             alt="Ratio path diagram for ${variety.familyLabel}" loading="lazy">
         </div>`
       );
-      // insert before the braid diagram subsection
       const braidSubsection = card.querySelector(`#braid-toolbar-${variety.id}`)
         .closest('.subsection');
       braidSubsection.insertAdjacentHTML('beforebegin', rpathHTML);
 
-      // wire up the subsection toggle and toolbar
-      card.querySelectorAll('.subsection-header').forEach(header => {
-        header.addEventListener('click', () => {
-          header.closest('.subsection').classList.toggle('open');
+      // only wire up the new subsection header
+      braidSubsection.previousElementSibling.querySelector('.subsection-header')
+        .addEventListener('click', () => {
+          braidSubsection.previousElementSibling.classList.toggle('open');
         });
-      });
+
       buildRpathToolbar(card, variety.id);
     }
   });
@@ -347,6 +383,10 @@ fetch('data.json')
   .then(varieties => {
     varieties.sort((a, b) => a.familyLabel.localeCompare(b.familyLabel, undefined, { numeric: true }));
     const list = document.querySelector('.variety-list');
-    varieties.forEach(v => list.appendChild(buildCard(v)));
+    varieties.forEach(v => {
+      const card = buildCard(v);
+      loadedVarieties.push({ variety: v, card });
+      list.appendChild(card);
+    });
   })
   .catch(err => console.error('Failed to load data.json:', err));
