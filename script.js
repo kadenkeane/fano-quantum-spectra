@@ -166,6 +166,12 @@ const STATUS_TEXT = {
   unconfirmed:    'Unconfirmed',
 };
 
+function fileExists(url) {
+  return fetch(url, { method: 'HEAD' })
+    .then(res => res.ok)
+    .catch(() => false);
+}
+
 function buildSubsection(title, contentHTML) {
   return `
     <div class="subsection">
@@ -237,14 +243,6 @@ function buildCard(variety) {
               alt="Braid animation for ${variety.familyLabel}" loading="lazy">
           </div>`
         )}
-        ${/*buildSubsection('Discriminant Points',
-          `<div class="braid-toolbar" id="rpath-toolbar-${variety.id}"></div>
-          <div class="media-frame">
-            <img id="rpath-img-${variety.id}"
-              src="data/${variety.id}/${variety.id}_q1_rPath.png"
-              alt="Ratio path diagram for ${variety.familyLabel}" loading="lazy">
-          </div>`
-        )*/""} 
 
         ${buildSubsection('Braid diagram',
           `<div class="braid-toolbar" id="braid-toolbar-${variety.id}"></div>
@@ -316,7 +314,30 @@ function buildCard(variety) {
     });
     toolbar.appendChild(btn);
   });
+  fileExists(`data/${variety.id}/${variety.id}_q1_rPath.png`).then(exists => {
+    if (exists) {
+      const rpathHTML = buildSubsection('Discriminant Points',
+        `<div class="braid-toolbar" id="rpath-toolbar-${variety.id}"></div>
+        <div class="media-frame">
+          <img id="rpath-img-${variety.id}"
+            src="data/${variety.id}/${variety.id}_q1_rPath.png"
+            alt="Ratio path diagram for ${variety.familyLabel}" loading="lazy">
+        </div>`
+      );
+      // insert before the braid diagram subsection
+      const braidSubsection = card.querySelector(`#braid-toolbar-${variety.id}`)
+        .closest('.subsection');
+      braidSubsection.insertAdjacentHTML('beforebegin', rpathHTML);
 
+      // wire up the subsection toggle and toolbar
+      card.querySelectorAll('.subsection-header').forEach(header => {
+        header.addEventListener('click', () => {
+          header.closest('.subsection').classList.toggle('open');
+        });
+      });
+      buildRpathToolbar(card, variety.id);
+    }
+  });
   return card;
 }
 
