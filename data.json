@@ -78,7 +78,7 @@
     "superpotential_status": "unconfirmed",
     "contractions": "",
     "superpotential": "\\frac{q_1yz(1+x+y+z)^2 + q_2x(1+x+y+z)^4}{xyz}",
-    "spectrumPolynomial": "64q_1^3t-256q_1^2q_2t-48q_1^2t^2+1280q_1q_2t^2-4096q_2^2t^2+",
+    "spectrumPolynomial": "64q_1^3t-256q_1^2q_2t-48q_1^2t^2+1280q_1q_2t^2-4096q_2^2t^2+12q_1t^3+128q_2t^3-t^4",
     "braidWord": "\\sigma_3\\sigma_2^{-1}\\sigma_3\\sigma_2\\sigma_3",
     "startClusters": "\\{1, 2\\}, \\{3, 4\\}",
     "endClusters": "\\{1, 2, 3\\}, \\{4\\}",
