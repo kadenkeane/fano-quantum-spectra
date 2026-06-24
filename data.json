@@ -96,14 +96,14 @@
     "braidWord": "\\sigma_2^{-1}\\sigma_3\\sigma_2\\sigma_3",
     "startClusters": "\\{1, 2\\}, \\{3, 4\\}",
     "endClusters": "\\{1, 2, 3, 4\\}",
-    "notes": ""
+    "notes": "Superpotential is missing one critical value"
   },
   {
     "id": "MM_2-6",
     "familyLabel": "MM 2-6",
     "name": "",
     "mutation_status": "unconfirmed",
-    "superpotential_status": "unconfirmed",
+    "superpotential_status": "confirmed",
     "contractions": "",
     "superpotential": "\\frac{q_1z(1+x+y+z)^2 + q_2xy(1+x+y+z)^2}{xyz}",
     "spectrumPolynomial": "64q_1^3t+192q_1^2q_2t+192q_1q_2^2t+64q_2^3t-48q_1^2t^2+336q_1q_2t^2-48q_2^2t^2+12q_1t^3+12q_2t^3-t^4",
@@ -117,7 +117,7 @@
     "familyLabel": "MM 2-9",
     "name": "",
     "mutation_status": "unconfirmed",
-    "superpotential_status": "unconfirmed",
+    "superpotential_status": "confirmed",
     "contractions": "",
     "superpotential": "\\frac{q_1x(1+x)(1+y+z)^2 + q_2yz(1+x)(1+y+z)}{xyz}",
     "spectrumPolynomial": "q_1^2q_2^2t+2q_1q_2^3t+q_2^4t-64q_1^3t^2-136q_1^2q_2t^2-80q_1q_2^2t^2-4q_2^3t^2+48q_1^2t^3-166q_1q_2t^3+6q_2^2t^3-12q_1t^4-4q_2t^4+t^5",
@@ -131,7 +131,7 @@
     "familyLabel": "MM 2-12",
     "name": "",
     "mutation_status": "unconfirmed",
-    "superpotential_status": "unconfirmed",
+    "superpotential_status": "confirmed",
     "contractions": "",
     "superpotential": "\\frac{q_1xyz(1+x)(1+y)(1+z) + q_2(1+x)(1+y)(1+z)}{xyz}",
     "spectrumPolynomial": "q_1^4t-4q_1^3q_2t+6q_1^2q_2^2t-4q_1q_2^3t+q_2^4t-4q_1^3t^2-124q_1^2q_2t^2-124q_1q_2^2t^2-4q_2^3t^2+6q_1^2t^3-124q_1q_2t^3+6q_2^2t^3-4q_1t^4-4q_2t^4+t^5",
@@ -166,14 +166,14 @@
     "braidWord": "\\sigma_2\\sigma_2\\sigma_1",
     "startClusters": "\\{1, 2, 3\\}",
     "endClusters": "\\{1, 2\\}, \\{3\\}",
-    "notes": ""
+    "notes": "Superpotential is missing two critical values"
   },
   {
     "id": "MM_2-24",
     "familyLabel": "MM 2-24",
     "name": "",
     "mutation_status": "unconfirmed",
-    "superpotential_status": "unconfirmed",
+    "superpotential_status": "confirmed",
     "contractions": "",
     "superpotential": "\\frac{xyz^2 + q_1xy(1+x+y) + q_2z(1+x+y)^2}{xyz}",
     "spectrumPolynomial": "64q_2^3t^3-48q_2^2t^4+12q_2t^5-t^6-24q_1q_2^2t^2+174q_1q_2t^3+12q_1t^4+27q_1^2q_2^2-24q_1^2q_2t-48q_1^2t^2+64q_1^3",
@@ -187,7 +187,7 @@
     "familyLabel": "MM 2-27",
     "name": "",
     "mutation_status": "unconfirmed",
-    "superpotential_status": "unconfirmed",
+    "superpotential_status": "confirmed",
     "contractions": "",
     "superpotential": "\\frac{xyz^2 + q_1xy(1+x)(1+y) + q_2z(1+x)(1+y)}{xyz}",
     "spectrumPolynomial": "q_2^4t^2-4q_2^3t^3+6q_2^2t^4-4q_2t^5+t^6+2q_1q_2^3t-80q_1q_2^2t^2-166q_1q_2t^3-12q_1t^4+q_1^2q_2^2-136q_1^2q_2t+48q_1^2t^2-64q_1^3",
@@ -236,7 +236,7 @@
     "braidWord": "\\sigma_2\\sigma_2",
     "startClusters": "\\{1, 2\\}, \\{3\\}",
     "endClusters": "\\{1, 2\\}, \\{3\\}",
-    "notes": ""
+    "notes": "Superpotential is missing one critical value"
   },
   {
     "id": "MM_2-8",
@@ -264,7 +264,7 @@
     "braidWord": "\\sigma_4\\sigma_4\\sigma_3\\sigma_6\\sigma_6\\sigma_2\\sigma_3\\sigma_4^{-1}\\sigma_5\\sigma_6\\sigma_4\\sigma_3\\sigma_4^{-1}\\sigma_1\\sigma_6\\sigma_5\\sigma_4\\sigma_3",
     "startClusters": "\\{1, 2, 3, 4, 5\\}, \\{6, 7\\}",
     "endClusters": "\\{1, 2\\}, \\{3, 4, 5, 6, 7\\}",
-    "notes": ""
+    "notes": "Superpotential should have 4 critical values"
   },
   {
     "id": "MM_2-11",
@@ -278,14 +278,14 @@
     "braidWord": "\\sigma_3\\sigma_2^{-1}\\sigma_3\\sigma_2",
     "startClusters": "\\{1, 2\\}, \\{3, 4\\}",
     "endClusters": "\\{1, 2, 3\\}, \\{4\\}",
-    "notes": ""
+    "notes": "Superpotential is missing one critical value"
   },
   {
     "id": "MM_2-16",
     "familyLabel": "MM 2-16",
     "name": "",
     "mutation_status": "unconfirmed",
-    "superpotential_status": "unconfirmed",
+    "superpotential_status": "confirmed",
     "contractions": "",
     "superpotential": "\\frac{(x+1)^2(y+1)^2 + q_1xyz^2 + q_2z(x+1)^2(y+1)}{xyz}",
     "spectrumPolynomial": "t^4 + (q_1 - 12q_2)t^3 + (-80q_1q_2 + 48q_2^2)t^2 + (-64q_1^2q_2 - 128q_1q_2^2 - 64q_2^3)t",
