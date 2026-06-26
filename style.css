@@ -170,9 +170,14 @@ a:hover { text-decoration: underline; }
   border: 1px solid rgba(42, 122, 74, 0.25);
 }
 
-[data-mutation-status="unconfirmed"] .status-badge,
+[data-mutation-status="unconfirmed"][data-superpotential-status="confirmed"] .status-badge,
+[data-mutation-status="unconfirmed"][data-superpotential-status="confirmed_star"] .status-badge {
+  color: #a98c1a;
+  background: rgba(138, 90, 16, 0.1);
+  border: 1px solid rgba(138, 90, 16, 0.2);
+}
 [data-superpotential-status="unconfirmed"] .status-badge {
-  color: #8a5a10;
+  color: #9f1111;
   background: rgba(138, 90, 16, 0.1);
   border: 1px solid rgba(138, 90, 16, 0.2);
 }
