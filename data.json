@@ -186,14 +186,14 @@
     "familyLabel": "MM 2-10",
     "name": "Blow-up of the complete intersection of two quadrics in $\\mathbb{P}^5$ in an elliptic curve",
     "mutation_status": "unconfirmed",
-    "superpotential_status": "unconfirmed",
+    "superpotential_status": "confirmed",
     "contractions": "",
-    "superpotential": "\\frac{(x+1)^2(z+1)^2 + q_1xy^2z + q_2y(x+1)(x+z+1)^2}{xyz}",
-    "spectrumPolynomial": "t^7 + (-32q_1 + 2q_2)t^6 + (256q_1^2 - 132q_1q_2 + q_2^2)t^5 + (464q_1^2q_2 - 152q_1q_2^2)t^4+ (-256q_1^3q_2 - 148q_1^2q_2^2 - 36q_1q_2^3)t^3 + (3060q_1^3q_2^2 - 1704q_1^2q_2^3 + 16q_1q_2^4)t^2+ (6588q_1^3q_2^3 - 2368q_1^2q_2^4)t + (-2916q_1^4q_2^3 + 3456q_1^3q_2^4 - 1024q_1^2q_2^5)",
-    "braidWord": "\\sigma_4\\sigma_4\\sigma_3\\sigma_6\\sigma_6\\sigma_2\\sigma_3\\sigma_4^{-1}\\sigma_5\\sigma_6\\sigma_4\\sigma_3\\sigma_4^{-1}\\sigma_1\\sigma_6\\sigma_5\\sigma_4\\sigma_3",
-    "startClusters": "\\{1, 2, 3, 4, 5\\}, \\{6, 7\\}",
-    "endClusters": "\\{1, 2\\}, \\{3, 4, 5, 6, 7\\}",
-    "notes": "Superpotential should have 4 critical values"
+    "superpotential": "\\frac{x^2yz(1+y)+q_1x(1+y)^2(1+z)^2+q_1q_2(1+y)(1+z)^2-4q_1xyz}{xyz}",
+    "spectrumPolynomial": "2304q_1^4-448q_1^3q_2-256q_1^2q_2^2+768q_1^3t-464q_1^2q_2t-64q_1q_2^2t-32q_1^2t^2-84q_1q_2t^2-16q_1t^3+q_2t^3+t^4",
+    "braidWord": "\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_3\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3^{-1}\\sigma_3\\sigma_3\\sigma_2\\sigma_3\\sigma_3\\sigma_1",
+    "startClusters": "\\{1, 2, 3\\}, \\{4\\}",
+    "endClusters": "\\{1, 2\\}, \\{3, 4\\}",
+    "notes": ""
   },
   {
     "id": "MM_2-11",
