@@ -74,7 +74,7 @@
     "familyLabel": "MM 2-1",
     "name": "Blow-up of a degree 6 hypersurface in $\\mathbb{P}(1,1,1,2,3)$ in an elliptic curve",
     "mutation_status": "unconfirmed",
-    "superpotential_status": "unconfirmed",
+    "superpotential_status": "confirmed",
     "contractions": "",
     "superpotential": "\\frac{(x+y+1)^5 + (x+y+1)^6zq_2 + q_1xy^2z^2(1+x+y)}{xy^2z}",
     "spectrumPolynomial": "t^4+t^3q_1-864t^3q_2-2592t^2q_1q_2-1728tq_1^2q_2^1+186624t^2q_2^2+186624tq_1q_2^2",
