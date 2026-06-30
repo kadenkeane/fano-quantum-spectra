@@ -362,5 +362,61 @@
     "startClusters": "\\{1, 2\\}, \\{3\\}, \\{4, 5\\}",
     "endClusters": "\\{1, 2, 3, 4\\}, \\{5\\}",
     "notes": ""
+  },
+  {
+    "id": "MM_2-30",
+    "familyLabel": "MM 2-30",
+    "name": "blow-up of $\\mathbb{P}^3$ in a conic",
+    "mutation_status": "unconfirmed",
+    "superpotential_status": "unconfirmed",
+    "contractions": "",
+    "superpotential": "x+y+z + \\frac{q_2}{xy} + \\frac{q_2}{xz} + \\frac{q_1}/{xyz}",
+    "spectrumPolynomial": "-256q_1^4q_2-432q_1^3q_2^2-384q_1^3q_2t-120q_1^2q_2t^2+4q_1q_2t^3+q_1t^4+t^5",
+    "braidWord": "\\sigma_4\\sigma_3\\sigma_3\\sigma_1\\sigma_2\\sigma_1^{-1}\\sigma_4",
+    "startClusters": "\\{1, 2, 3, 4, 5\\}",
+    "endClusters": "\\{1, 2, 3, 4\\}, \\{5\\}",
+    "notes": ""
+  },
+  {
+    "id": "MM_2-31",
+    "familyLabel": "MM 2-31",
+    "name": "Blow-up of a quadric threefold in $\\mathbb{P}^4$ in a line",
+    "mutation_status": "unconfirmed",
+    "superpotential_status": "unconfirmed",
+    "contractions": "",
+    "superpotential": "x+q_1y+z + \\frac{q_2}{x} + \\frac{1}{xy} + \\frac{1}{yz}",
+    "spectrumPolynomial": "-27q_1^4q_2^2-64q_1^3q_2^3-108q_1^4q_2t-328q_1^3q_2^2t-234q_1^3q_2t^2+48q_1^2q_2^2t^2-142q_1^2q_2t^3+q_1^2t^4-12q_1q_2t^4+2q_1t^5+t^6",
+    "braidWord": "\\sigma_4\\sigma_5\\sigma_3\\sigma_2^{-1}\\sigma_1\\sigma_2\\sigma_1\\sigma_3",
+    "startClusters": "\\{1, 2, 3, 4, 5, 6\\}",
+    "endClusters": "\\{1, 2, 3, 4\\}, \\{5, 6\\}",
+    "notes": ""
+  },
+  {
+    "id": "MM_2-35",
+    "familyLabel": "MM 2-35",
+    "name": "Blow-up of $\\mathbb{P}^3$ at a point",
+    "mutation_status": "unconfirmed",
+    "superpotential_status": "unconfirmed",
+    "contractions": "",
+    "superpotential": "x+y+z + \\frac{q_1}{x} + \\frac{q_2}{xyz}",
+    "spectrumPolynomial": "t^6-12q_1t^4+4q_2t^4+48q_1^2t^2-320q_1q_2t^2-64q_1^3-512q_1^2q_2-1024q_1q_2^2",
+    "braidWord": "\\sigma_3\\sigma_4\\sigma_2\\sigma_5\\sigma_1\\sigma_4\\sigma_2\\sigma_5\\sigma_1",
+    "startClusters": "\\{1\\}, \\{2, 3, 4, 5\\}, \\{6\\}",
+    "endClusters": "\\{1, 2, 3\\}, \\{4, 5, 6\\}",
+    "notes": ""
+  },
+  {
+    "id": "MM_2-36",
+    "familyLabel": "MM 2-36",
+    "name": "$\\mathbb{P}(\\mathcal{O}_{\\mathbb{P}^2}\\oplus\\mathcal{O}_{\\mathbb{P}^2}(2))",
+    "mutation_status": "unconfirmed",
+    "superpotential_status": "unconfirmed",
+    "contractions": "",
+    "superpotential": "x+y+z + \\frac{q_1}{x} + \\frac{q_2}{x^2yz}",
+    "spectrumPolynomial": "-64q_1^3q_2^3+3125q_1^2q_2^4-1000q_1^2q_2^3t+48q_1^2q_2^2t^2+50q_1q_2^2t^3-12q_1q_2t^4-4q_2t^5+t^6",
+    "braidWord": "\\sigma_2\\sigma_5\\sigma_3\\sigma_1\\sigma_4\\sigma_2\\sigma_1^{-1}\\sigma_3\\sigma_5",
+    "startClusters": "\\{1\\}, \\{2, 3, 4, 5, 6\\}",
+    "endClusters": "\\{1, 2, 3, 4, 5, 6\\}",
+    "notes": ""
   }
 ]
