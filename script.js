@@ -40,6 +40,19 @@ function renderText(str) {
 const titleEl = document.getElementById('site-title');
 titleEl.innerHTML = renderText(titleEl.textContent);
 
+const ANIMATION_PERTURBATION_TOGGLE = {
+  key: 'perturbation',
+  states: [
+    { value: 'positive', label: 'Positive Perturbation' },
+    { value: 'negative', label: 'Negative Perturbation' },
+    // { value: 'zero',     label: 'No Perturbation' },
+  ]
+};
+
+const ANIMATION_TOGGLES = [
+  ANIMATION_PERTURBATION_TOGGLE,
+];
+
 const BRAID_TOGGLES = [
   {
     key: 'simplification',
@@ -62,7 +75,7 @@ const BRAID_TOGGLES = [
     key: 'perturbation',
     states: [
       { value: 'positive', label: 'Positive Perturbation' },
-      { value: 'negative', label: 'Negative Perturbation' },
+      { value: 'negative', label: 'Negative Perturbation' }
     ]
   },
   {
@@ -96,16 +109,10 @@ function braidImagePath(varietyId, state) {
   return `data/${varietyId}/${varietyId}_${color}_coloring_${crossings}_crossings_${perturbation}_perturbation_${order}_order_${simplification}_simplification.png`;
 }
 
-const ANIMATION_TOGGLES = [
-  // BRAID_TOGGLES.find(t => t.key === 'color'),
-  BRAID_TOGGLES.find(t => t.key === 'perturbation'),
-];
 
 function animationImagePath(varietyId, animationType, state) {
-  const colorToggle       = BRAID_TOGGLES.find(t => t.key === 'color');
-  const perturbationToggle = BRAID_TOGGLES.find(t => t.key === 'perturbation');
-  const color        = colorToggle.states[state.color].value;
-  const perturbation = perturbationToggle.states[state.perturbation].value;
+  const color        = BRAID_TOGGLES.find(t => t.key === 'color').states[state.color].value;
+  const perturbation = ANIMATION_PERTURBATION_TOGGLE.states[state.perturbation].value;
   return `data/${varietyId}/${varietyId}_${animationType}_${color}_coloring_${perturbation}_perturbation.gif`;
 }
 
@@ -292,10 +299,10 @@ function buildCard(variety) {
         <div class="divider"></div>
 
         <div class="meta-strip">
-          <div class="info-block">
+          <!--<div class="info-block">
             <p class="block-label">Braid word</p>
             <div class="math-block">${renderMath(variety.braidWord)}</div>
-          </div>
+          </div> -->
           <div class="info-block">
             <p class="block-label">Clusters</p>
             <p class="block-text">
