@@ -87,7 +87,7 @@
     "id": "MM_2-2",
     "familyLabel": "MM 2-2",
     "name": "Double cover of $\\mathbb{P}^1\\times\\mathbb{P}^2$ with branch locus a $(2,4)$-divisor",
-    "mutation_status": "unconfirmed",
+    "mutation_status": "confirmed",
     "superpotential_status": "confirmed",
     "contractions": "",
     "superpotential": "\\frac{q_1yz(1+x+y+z)^2 + q_2x(1+x+y+z)^4}{xyz}",
