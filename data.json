@@ -252,6 +252,20 @@
     "notes": ""
   },
   {
+    "id": "MM_2-14",
+    "familyLabel": "MM 2-14",
+    "name": "",
+    "mutation_status": "unconfirmed",
+    "superpotential_status": "unconfirmed",
+    "contractions": "",
+    "superpotential": "",
+    "spectrumPolynomial": "",
+    "braidWord": "\\sigma_4\\sigma_1\\sigma_1\\sigma_4\\sigma_4\\sigma_4^{-1}\\sigma_4^{-1}\\sigma_4\\sigma_4^{-1}\\sigma_4\\sigma_4\\sigma_3\\sigma_4^{-1}\\sigma_2\\sigma_3\\sigma_4\\sigma_4\\sigma_1\\sigma_3",
+    "startClusters": "\\{5\\}, \\{2, 3, 1, 4\\}",
+    "endClusters": "\\{1, 2\\}, \\{3, 5, 4\\}",
+    "notes": ""
+  },
+  {
     "id": "MM_2-16",
     "familyLabel": "MM 2-16",
     "name": "Blow-up of the complete intersection of two quadrics in $\\mathbb{P}^5$ in a conic",
